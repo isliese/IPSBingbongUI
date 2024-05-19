@@ -25,7 +25,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.tabs.TabLayout;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+
 public class MainActivity extends AppCompatActivity {
+    private AppCompatButton bookPurchaseLinkButton;
 
     // 날짜별 일기 데이터를 저장할 HashMap 초기화
     HashMap<String, String> diaryEntries = new HashMap<>();
@@ -43,6 +51,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        // 버튼 초기화
+        bookPurchaseLinkButton = findViewById(R.id.bookPurchaseLinkButton);
+
+        // 버튼 클릭 이벤트 처리
+        bookPurchaseLinkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 구매 링크로 이동하는 Intent 생성
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("여기에_이동할_링크_삽입"));
+                // Intent 실행
+                startActivity(intent);
+            }
+        });
 
         calendarView = findViewById(R.id.calendarView);
         dateButton = findViewById(R.id.dateButton);  // XML 파일에서 Button을 찾음
@@ -94,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
                 tab.setCustomView(textView);
             }
         }
+
+        AppCompatButton bookPurchaseLinkButton;
+
+
 
     }
 

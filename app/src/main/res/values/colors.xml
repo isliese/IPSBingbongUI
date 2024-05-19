@@ -3,6 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#EEEEEE</color>
+    <color name="green">"#88579C72"</color>
+    <color name="deep_green">"#EE579C72"</color>
 
 
     <selector xmlns:android="http://schemas.android.com/apk/res/android">

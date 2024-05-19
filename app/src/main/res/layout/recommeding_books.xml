@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    android:layout_width="match_parent"
+    android:layout_height="700dp"
+    tools:context=".MainActivity">
+
+    <!-- Calender Tab, Forest Tab, Recommend Tab -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:padding="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabGravity="fill"
+        app:tabMode="fixed">
+
+        <!-- Calendar Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCalendar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background"
+            android:text="Calendar"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <!-- Forest Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabForest"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_color"
+            android:text="Forest"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <!-- Recommend Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabRecommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_color"
+            android:text="Recommend"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/rounded_rectangle"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/bookTitleTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout">
+
+        <ImageView
+            android:id="@+id/bookCoverImageView"
+            android:layout_width="match_parent"
+            android:layout_height="297dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:src="@drawable/placeholder_book_cover" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bookTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="도서명"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="515dp" />
+
+    <TextView
+        android:id="@+id/bookAuthorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:text="저자명"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="554dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bookPurchaseLinkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_pressed_design"
+        android:text="구매하기"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="591dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/musicButton"
+        android:layout_width="80dp"
+        android:layout_height="34dp"
+        android:background="@drawable/button_state_selector"
+        android:text="MUSIC"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bookButton"
+        android:layout_width="80dp"
+        android:layout_height="34dp"
+        android:background="@drawable/button_state_selector"
+        android:text="BOOK"
+        android:textSize="17dp"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="158dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
