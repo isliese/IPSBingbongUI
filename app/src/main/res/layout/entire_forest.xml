@@ -53,12 +53,34 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <!-- 키워드가 하나 생성될 때마다 나무 생성-->
-    <ImageView
+    <!-- 키워드가 하나 생성될 때마다 나무 생성 -->
+    <ImageButton
+        android:id="@+id/each_tree"
         android:layout_width="81dp"
         android:layout_height="74dp"
         android:src="@drawable/entire_forest_tree"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="404dp" />
+        android:scaleType="fitCenter"
+        android:background="null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintVertical_bias="0.268" />
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <FrameLayout
+            android:id="@+id/imageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

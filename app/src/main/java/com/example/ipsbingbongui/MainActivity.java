@@ -3,6 +3,10 @@ package com.example.ipsbingbongui;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,9 +20,11 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -31,178 +37,152 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+
+import android.widget.ImageButton;
 
 
 public class MainActivity extends AppCompatActivity {
-    private AppCompatButton bookPurchaseLinkButton;
 
-    // 날짜별 일기 데이터를 저장할 HashMap 초기화
-    HashMap<String, String> diaryEntries = new HashMap<>();
+    private ImageViewModel imageViewModel;
+    private LinearLayout imageContainer;
 
-    //    CalendarView calendarView;
-    Calendar calendar;
-    CalendarView calendarView;
-    private Button dateButton;
+    // tree image의 크기 상수로 지정
+    private final int imageWidth = 81;
+    private final int imageHeight = 74;
 
-    //  CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
-//    long selectedDate = calendarView.getDate();
-//    Button dateButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.forest);
+
+
+        // 데이터베이스에 새로운 데이터가 추가되면 이미지 생성
+        imageContainer = findViewById(R.id.imageContainer);
+        imageViewModel = new ViewModelProvider(this).get(ImageViewModel.class);
+        imageViewModel.getAllImages().observe(this, new Observer<List<ImageEntity>>() {
+            @Override
+            public void onChanged(List<ImageEntity> images) {
+                updateImages(images);
+            }
+        });
+
+
+
 
         // 버튼 초기화
-        bookPurchaseLinkButton = findViewById(R.id.bookPurchaseLinkButton);
+        ImageButton entireForestButton = (ImageButton) findViewById(R.id.entire_forest_button);
 
-        // 버튼 클릭 이벤트 처리
-        bookPurchaseLinkButton.setOnClickListener(new View.OnClickListener() {
+        // entireForestButton 버튼 클릭 이벤트 처리
+        entireForestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 구매 링크로 이동하는 Intent 생성
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("여기에_이동할_링크_삽입"));
+                Intent intent = new Intent(MainActivity.this, SubActivity.class);
                 // Intent 실행
                 startActivity(intent);
             }
         });
 
 
-        calendarView = findViewById(R.id.calendarView);
-        dateButton = findViewById(R.id.dateButton);  // XML 파일에서 Button을 찾음
-
-        calendar = Calendar.getInstance();
-
-
-        initializeDiaryEntries();
-
-
-        // Set the initial date and update the button text
-        setDate(23, 5, 2024); // 원하는 날짜로 설정
-        getDate();  // Button 텍스트를 현재 날짜로 업데이트
-
-        // Listener for date changes
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        // 나뭇잎1
+        ImageView imageView1 = findViewById(R.id.leaf1);
+        imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                setDate(day, month + 1, year);  // month는 0부터 시작하므로 1을 더함
-                getDate();  // 새로운 날짜로 Button 텍스트를 업데이트
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "2004.12.29", Toast.LENGTH_SHORT).show();
             }
         });
-        TabLayout tabLayout = findViewById(R.id.tabLayout);
-
-        // Adding Calendar tab
-        TabLayout.Tab tabCalendar = tabLayout.newTab();
-        tabCalendar.setText("Calendar");
-        tabLayout.addTab(tabCalendar);
-
-        // Adding Forest tab
-        TabLayout.Tab tabForest = tabLayout.newTab();
-        tabForest.setText("Forest");
-        tabLayout.addTab(tabForest);
-
-        // Adding Recommend tab
-        TabLayout.Tab tabRecommend = tabLayout.newTab();
-        tabRecommend.setText("Recommend");
-        tabLayout.addTab(tabRecommend);
-
-        // Optional: Set tab text appearance if needed
-        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            TabLayout.Tab tab = tabLayout.getTabAt(i);
-            if (tab != null) {
-                TextView textView = new TextView(this);
-                textView.setText(tab.getText());
-                textView.setTextSize(17);  // Set desired text size
-                textView.setTextColor(getResources().getColor(R.color.black));  // Set desired text color
-                textView.setGravity(android.view.Gravity.CENTER);
-                tab.setCustomView(textView);
+        // 나뭇잎2
+        ImageView imageView2 = findViewById(R.id.leaf2);
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "2004.03.10", Toast.LENGTH_SHORT).show();
             }
-        }
-
-        AppCompatButton bookPurchaseLinkButton;
-
-
+        });
+        // 나뭇잎3
+        ImageView imageView3 = findViewById(R.id.leaf3);
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "2004.5.07", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
-    private void initializeDiaryEntries() {
-        // 예제 데이터 추가
-        diaryEntries.put("2024.05.23", "오늘은 좋은 날씨였다.");
-        diaryEntries.put("2024.05.24", "친구와 함께 산책을 했다.");
-        diaryEntries.put("2024.05.25", "책을 읽고 휴식을 취했다.");
-    }
 
-    public void getDate() {
-        long date = calendarView.getDate();  // 현재 CalendarView에서 선택된 날짜를 가져옴
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault());
-        calendar.setTimeInMillis(date);  // Calendar 인스턴스에 해당 날짜를 설정
-        String selectedDate = simpleDateFormat.format(calendar.getTime());  // 날짜를 "yyyy.MM.dd" 형식으로 변환
-        dateButton.setText(selectedDate + " 기록 확인하기");  // Button 텍스트를 설정
+
+
+    // ImageView가 클릭 됐을 때 실행되는 클릭 handler
+    public void displayToast(String date) {
+        Toast.makeText(getApplication(),date,Toast.LENGTH_SHORT).show();
+    }
+    public void showDateOrder(View view) {
+        displayToast(getString(R.string.date));
+
     }
 
 
-    public void setDate(int day, int month, int year) {
-        calendar.set(Calendar.YEAR, year);
-        calendar.set(Calendar.MONTH, month - 1); // month is 0-based
-        calendar.set(Calendar.DAY_OF_MONTH, day);
-        long milli = calendar.getTimeInMillis();
-        calendarView.setDate(milli, true, true);
-    }
-
-
-    // 해시맵에 있는 날짜별 데이터를 보여주는 함수
-    private void displayDiaryEntry(int day, int month, int year) {
-        String dateKey = String.format(Locale.getDefault(), "%04d.%02d.%02d", year, month, day);
-        String entry = diaryEntries.get(dateKey);
-        if (entry != null) {
-            Toast.makeText(this, entry, Toast.LENGTH_LONG).show(); // 데이터를 Toast로 표시
-        } else {
-            Toast.makeText(this, "해당 날짜의 데이터가 없습니다.", Toast.LENGTH_LONG).show();
+    // 데이터베이스에 새로운 데이터가 추가되면 이미지 생성
+    private void updateImages(List<ImageEntity> images) {
+        imageContainer.removeAllViews();
+        for (ImageEntity image : images) {
+            ImageView imageView = new ImageView(this);
+            // Glide 또는 Picasso를 사용하여 이미지 로드
+            Glide.with(this).load(image.getImageUrl()).into(imageView);
+            imageContainer.addView(imageView);
         }
     }
+
+    
+    // 랜덤 위치에 tree 이미지 추가 (나무 이미지끼리는 겹치지 않도록 함)
+    private void addTreeImage() {
+        ImageButton imageButton = new ImageButton(this);
+        imageButton.setLayoutParams(new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT));
+        imageButton.setImageResource(R.drawable.entire_forest_tree); // 이미지 리소스 설정
+        imageButton.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        imageButton.setBackground(null);
+
+        // 이미지가 겹치지 않도록 배치하는 로직
+        int x, y;
+        Random random = new Random();
+        boolean positionFound;
+
+        do {
+            positionFound = true;
+            x = random.nextInt(imageContainer.getWidth() - imageWidth);
+            y = random.nextInt(imageContainer.getHeight() - imageHeight);
+
+            for (int i = 0; i < imageContainer.getChildCount(); i++) {
+                ImageButton existingImage = (ImageButton) imageContainer.getChildAt(i);
+                int existingX = (int) existingImage.getX();
+                int existingY = (int) existingImage.getY();
+
+                if (isOverlapping(x, y, existingX, existingY)) {
+                    positionFound = false;
+                    break;
+                }
+            }
+        } while (!positionFound);
+
+        imageButton.setX(x);
+        imageButton.setY(y);
+        imageContainer.addView(imageButton);
+    }
+
+    private boolean isOverlapping(int x1, int y1, int x2, int y2) {
+        return x1 < x2 + imageWidth && x1 + imageWidth > x2 &&
+                y1 < y2 + imageHeight && y1 + imageHeight > y2;
+    }
+    
+    
+    
 }
-
-
-
-
-
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
-//    }
-//    public void onDateButtonClick(View view) {
-//        // CalendarView에서 선택된 날짜 가져오기
-//        long selectedDate = calendarView.getDate();
-//
-//        // 선택된 날짜를 버튼 텍스트로 설정하기
-//        dateButton.setText(formatDate(selectedDate));
-//    }
-//    // 선택된 날짜를 원하는 형식으로 포맷하는 메서드
-//    private String formatDate(long date) {
-//        // 여기서 날짜를 원하는 형식으로 포맷합니다. 예를 들어, SimpleDateFormat을 사용하여 포맷할 수 있습니다.
-//        // 이 예제에서는 간단하게 년, 월, 일을 추출하여 문자열로 반환합니다.
-//        int year = getYearFromDate(date);
-//        int month = getMonthFromDate(date) + 1; // 월은 0부터 시작하므로 1을 더해줍니다.
-//        int dayOfMonth = getDayOfMonthFromDate(date);
-//
-//        return year + "." + String.format("%02d", month) + "." + String.format("%02d", dayOfMonth) + " 기록 확인하기";
-//    }
-//
-//    // long 형식의 날짜에서 연도를 추출하는 메서드
-//    private int getYearFromDate(long date) {
-//        return Integer.parseInt(android.text.format.DateFormat.format("yyyy", date).toString());
-//    }
-//
-//    // long 형식의 날짜에서 월을 추출하는 메서드
-//    private int getMonthFromDate(long date) {
-//        return Integer.parseInt(android.text.format.DateFormat.format("MM", date).toString());
-//    }
-//
-//    // long 형식의 날짜에서 일을 추출하는 메서드
-//    private int getDayOfMonthFromDate(long date) {
-//        return Integer.parseInt(android.text.format.DateFormat.format("dd", date).toString());
-//    }
-//}
-

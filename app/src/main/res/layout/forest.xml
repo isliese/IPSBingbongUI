@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
-    android:background="@drawable/forest_illrustration2"
+    android:background="@drawable/forest_illustration2"
     android:layout_width="match_parent"
     android:layout_height="800dp"
     tools:context=".MainActivity">
@@ -54,10 +54,12 @@
     </com.google.android.material.tabs.TabLayout>
 
     <!-- 키워드에 해당하는 나무-->
+
+    <!-- 날짜에 해당하는 나뭇잎 -->
     <ImageView
         android:layout_width="374dp"
         android:layout_height="607dp"
-        android:src="@drawable/tree_illrustration"
+        android:src="@drawable/tree_illustration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
@@ -67,9 +69,11 @@
 
     <!-- 날짜에 해당하는 나뭇잎 -->
     <ImageView
+        android:id="@+id/leaf1"
         android:layout_width="143dp"
         android:layout_height="84dp"
         android:src="@drawable/leaf_2"
+        android:onClick="showDateOrder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.205"
@@ -79,9 +83,11 @@
 
     <!-- 날짜에 해당하는 나뭇잎 -->
     <ImageView
+        android:id="@+id/leaf2"
         android:layout_width="107dp"
         android:layout_height="65dp"
         android:src="@drawable/leaf_1"
+        android:onClick="showDateOrder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
@@ -91,9 +97,13 @@
 
     <!-- 날짜에 해당하는 나뭇잎 -->
     <ImageView
+        android:id="@+id/leaf3"
         android:layout_width="109dp"
         android:layout_height="62dp"
         android:src="@drawable/leaffff_final"
+        android:onClick="showDateOrder"
+        android:contentDescription="날짜"
+        android:layout_centerInParent="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
@@ -103,16 +113,34 @@
 
     <!-- 전체 숲을 볼 수 있는 화면으로 넘어가는 버튼-->
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/entire_forest_button"
         android:layout_width="92dp"
         android:layout_height="74dp"
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/entire_forest"
-        tools:layout_editor_absoluteX="326dp"
-        tools:layout_editor_absoluteY="651dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        app:layout_constraintVertical_bias="0.877" />
 
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
+        <LinearLayout
+            android:id="@+id/imageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
