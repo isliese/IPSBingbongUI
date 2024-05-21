@@ -32,6 +32,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+
 public class MainActivity extends AppCompatActivity {
     private AppCompatButton bookPurchaseLinkButton;
 
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         calendarView = findViewById(R.id.calendarView);
         dateButton = findViewById(R.id.dateButton);  // XML 파일에서 Button을 찾음

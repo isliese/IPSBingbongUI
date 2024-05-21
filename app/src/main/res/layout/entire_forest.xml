@@ -1,0 +1,64 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    android:background="@drawable/entire_forest_background"
+    android:layout_width="match_parent"
+    android:layout_height="800dp"
+    tools:context=".MainActivity">
+
+    <!-- Calendar Tab, Forest Tab, Recommend Tab -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:padding="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabGravity="fill"
+        app:tabMode="fixed">
+
+        <!-- Calendar Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCalendar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background"
+            android:text="Calendar"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+        <!-- Forest Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabForest"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_color"
+            android:text="Forest"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <!-- Recommend Tab -->
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabRecommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_color"
+            android:text="Recommend"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- 키워드가 하나 생성될 때마다 나무 생성-->
+    <ImageView
+        android:layout_width="81dp"
+        android:layout_height="74dp"
+        android:src="@drawable/entire_forest_tree"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="404dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
