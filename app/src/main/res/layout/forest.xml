@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
-    android:background="@drawable/forestttt"
+    android:background="@drawable/forest_illrustration2"
     android:layout_width="match_parent"
     android:layout_height="800dp"
     tools:context=".MainActivity">
@@ -53,73 +53,55 @@
 
     </com.google.android.material.tabs.TabLayout>
 
+    <!-- 키워드에 해당하는 나무-->
     <ImageView
-        android:layout_width="231dp"
-        android:layout_height="272dp"
-        android:src="@drawable/treeeee"
+        android:layout_width="374dp"
+        android:layout_height="607dp"
+        android:src="@drawable/tree_illrustration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.911"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintVertical_bias="0.448"
-        app:tint="#44121916" />
+        app:layout_constraintVertical_bias="1.0" />
 
+    <!-- 날짜에 해당하는 나뭇잎 -->
     <ImageView
-        android:layout_width="303dp"
-        android:layout_height="369dp"
-        android:src="@drawable/treeeee"
+        android:layout_width="143dp"
+        android:layout_height="84dp"
+        android:src="@drawable/leaf_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintVertical_bias="0.083"
-        app:tint="#22121916" />
+        app:layout_constraintVertical_bias="0.534" />
 
-    <ImageView
-        android:layout_width="400dp"
-        android:layout_height="632dp"
-        android:src="@drawable/treeeee"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintVertical_bias="0.453" />
-
+    <!-- 날짜에 해당하는 나뭇잎 -->
     <ImageView
         android:layout_width="107dp"
         android:layout_height="65dp"
-        android:src="@drawable/leaf_image"
+        android:src="@drawable/leaf_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintVertical_bias="0.862" />
+        app:layout_constraintVertical_bias="0.549" />
 
-    <ImageView
-        android:layout_width="107dp"
-        android:layout_height="65dp"
-        android:src="@drawable/leaf_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.267"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintVertical_bias="0.825" />
-
+    <!-- 날짜에 해당하는 나뭇잎 -->
     <ImageView
         android:layout_width="109dp"
         android:layout_height="62dp"
-        android:src="@drawable/leaf_image"
+        android:src="@drawable/leaffff_final"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tabLayout"
-        app:layout_constraintVertical_bias="0.821" />
+        app:layout_constraintVertical_bias="0.615" />
 
+    <!-- 전체 숲을 볼 수 있는 화면으로 넘어가는 버튼-->
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="92dp"
@@ -127,8 +109,8 @@
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/entire_forest"
-        tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="666dp" /> <!-- or use centerInside -->
+        tools:layout_editor_absoluteX="326dp"
+        tools:layout_editor_absoluteY="651dp" />
 
 
 
